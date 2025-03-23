@@ -1,122 +1,128 @@
-# Write your code here. Task 1 Hello
-def hey ():
-  print("Hello!")
+# Task 1
 
-hey()
+def hello():
+  return "Hello!"
 
 # Task 2
 
-def greet (name):
-  print (f"Hello, {name}!")
-
-greet("Diana")
+def greet(name):
+  return f"Hello, {name}!"
 
 # Task 3
 
-def calculator (x, y, z="multiply"):
-  
-  if z = "multiply":
-    return x * y
-  elif z = "add":
-    return x + y
-  elif z = "subtract":
-    return x - y
-  elif z = "divide":
-    return x / y
-  elif z = "modulo":
-    return x % y
-  elif z = "int_divide":
-    return x // y
-  elif z = "power":
-    return pow(x,y)
-  else print("You can't divide by 0!")
-
-calculator ()
+def calc(x, y, z="multiply"):
+  try:
+    if z == "multiply":
+      return x * y
+    elif z == "add":
+      return x + y
+    elif z == "subtract":
+      return x - y
+    elif z == "divide":
+      return x / y
+    elif z == "modulo":
+      return x % y
+    elif z == "int_divide":
+      return x // y
+    elif z == "power":
+      return pow(x,y)
+    else:
+      return "Error!"
+  except ZeroDivisionError:
+      return "You can't divide by 0!"
+  except TypeError:
+      return "You can't multiply those values!"
 
 # Task 4
 
 def data_type_conversion(value,y):
-  if y = float:
-    return float(value)
-  elif y = str:
-    return str(value)
-  elif y = int:
-    return int(value)
-  else:
-    print (f"You can't convert {value} into a {y}.")
-
-data_type_conversion()
-
+  try:
+    if y == "float":
+      return float(value)
+    elif y == "str":
+      return str(value)
+    elif y == "int":
+      return int(value)
+  except Exception:
+      return f"You can't convert {value} into a {y}."
+  
 # Task 5
 
-def grade (*args):
-  average = sum(args) / len (args)
-
-  if average >= 90:
-    print ("A")
-  elif average >= 80 or <= 89:
-    print ("B")
-  elif average >= 70 or <= 79:
-    print ("C")
-  elif average >= 60 or <= 69:
-    print ("D")
-  elif < 60:
-    print("F")
-  else: 
-    print ("Invalid data was provided")
-
-  grade()
+def grade(*args):      
+  try: 
+    average = sum(args)/len(args)
+    return "A" if average >= 90 else "B" if average >= 80 else "C" if average >= 70 else "D" if average >= 60 else "F"
+  except:
+      return "Invalid data was provided."
 
 # Task 6
 
-  def repeat (string, count):
-    result = ""
+def repeat (x, count):
+  result = ""
 
-    for _ in range (count):
-      result += "string"
-    print (result)
+  for _ in range (count):
+    result += x
+
+  return result
 
 # Task 7
+# positional parameter either best or mean. best then the name with the highest score, if mean the average score is returned
+#kwargs is a dict (key/value pair) and you can iterate through it as follows
 
-  def student_scores(x, kwargs)
-    
+def student_scores(method, **kwargs):
+  if method == "mean":
+    return sum(kwargs.values())/len(kwargs)
+  else:
+    return max(kwargs, key = kwargs.get)
+  
 # Task 8
 
-  def titleize(string):
+def titleize(string):
 
-     little_words = ["a", "on", "an", "the", "of", "and", "is", "in"]
+  little_words = ["a", "on", "an", "the", "of", "and", "is", "in"]
 
-     string_list = string.split()
+  words = words.split()
 
-     for letter in string_list:
-       letter.capitalize()
-    return string.list
-
-
-# Task 9 - will work with mentor on this one
-#  def hangman(secret, guess):
-
-
-
-
-# Task 10 - will work with mentor on this one
-  # def  pig_latin ():
-
-
-
-
-
-
-
-
-
+  # for letter in words:
+  #   letter.capitalize()
   
-  
+  for i in range(len(words)):
+    words[i] = words[i].method()
 
+  return words
 
+# Task 9
 
+def hangman(secret, guess):
+  result = ""
 
+  for i in list(secret):
+    if i in guess:
+      result += i
+    else: result += "_"
+  return result
 
+# Task 10
+
+def pig_latin(stri):
+  result = ""
+  for st in stri.split(" "):
+    if st[0] in "aeiou":
+      result += st + "ay"
+    elif st[0:2] == "qu":
+      result += st[2:] + "quay"
+    else:
+      i=0
+      while (st[i] not in "aeiou"):
+        i += 1
+      if st [i-1 : i+1] == "qu":
+        result += st[i+1:] + st [:i+1] + "ay"
+      else:
+        result += st[i:] + st [:i] + "ay"
+    result += " "
+  return result [:-1]
+
+print (pig_latin("the quick brown fox"))
 
 
 
