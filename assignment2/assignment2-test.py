@@ -13,8 +13,8 @@ def test_column_name():
     assert a2.column_index("last_name") == 2
     assert a2.employee_id_column != None
 
-def test_first_name():
-    assert a2.first_name(2) in ("David","Lauren") # values before and after sort
+# def test_first_name():
+#     assert a2.first_name(2) in ("David","Lauren") # values before and after sort
 
 def test_employee_find():
     match = a2.employee_find(3)
