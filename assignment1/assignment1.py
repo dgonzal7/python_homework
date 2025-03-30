@@ -81,15 +81,17 @@ def titleize(string):
 
   little_words = ["a", "on", "an", "the", "of", "and", "is", "in"]
 
-  words = words.split()
+  words = string.split()
 
-  # for letter in words:
-  #   letter.capitalize()
-  
-  for i in range(len(words)):
-    words[i] = words[i].method()
+  for i, word in enumerate(words):
+    if i == 0 or i == len(words) - 1:
+      words[i] = word.capitalize()
+    elif word.lower() not in little_words:
+      words[i] = word.capitalize()
+    else:
+      words[i] = word.lower()
 
-  return words
+  return ' '.join(words)
 
 # Task 9
 
